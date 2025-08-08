@@ -12,8 +12,8 @@
   flex-direction: row;
   align-items: flex-start;
 
-  width: 85vw; /*Rộng 95% chiều ngang màn hình.*/
-  height: 65vh; /*Cao 60% chiều cao màn hình */
+  width: 70vw; /*Rộng 95% chiều ngang màn hình.*/
+  height: 78vh; /*Cao 60% chiều cao màn hình */
 
   /*Không viền, không bo góc, không margin.*/
   border: none;         
@@ -44,7 +44,7 @@
 /*Khung chat*/
 .chat-messages {
   flex: 1;  /*Cho khung tin nhắn chiếm hết không gian còn lại theo trục chính của cha (vì cha đang display:flex)*/
-  height: calc(75vh - 80px); /*Chiều cao tính theo màn hình: bằng 60% chiều cao viewport, rồi trừ đi 80px*/
+  height: calc(78vh - 60px); /*Chiều cao tính theo màn hình: bằng 60% chiều cao viewport, rồi trừ đi 80px*/
   overflow-y: auto; /*Khi nội dung chat dài hơn chiều cao, hiện thanh cuộn dọc. Khi ít nội dung thì không hiện thanh cuộn (tự động).*/
   border: none; /*khong vien*/
   padding: 40px; /*Khoảng trống bên trong.*/

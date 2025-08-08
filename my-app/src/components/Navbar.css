@@ -1,23 +1,22 @@
-/* Navbar container */
 .navbar {
   background-color: #333;
   padding: 0 20px;
+  display: flex;
+  justify-content: center; /* ✅ Canh giữa nội dung */
 }
 
-/* Navigation menu list */
 .navbar ul {
   list-style: none;
   display: flex;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
-/* Navigation menu items */
 .navbar li {
-  padding: 15px 20px;
+  padding: 15px 0;
 }
 
-/* Navigation links */
 .navbar a {
   color: #fff;
   text-decoration: none;
@@ -25,12 +24,10 @@
   transition: color 0.3s ease;
 }
 
-/* Hover effect */
 .navbar a:hover {
   color: #ffcc00;
 }
 
-/* Optional: Highlight active link */
 .navbar .active {
   border-bottom: 2px solid #ffcc00;
 }

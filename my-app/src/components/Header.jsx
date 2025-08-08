@@ -10,7 +10,7 @@ const Header = () => {
         <div className="header-title">Tên Web</div>
       </div>
       <div className="header-right">
-        <button className="header-btn">EN</button>
+        <button className="header-btn">JAP</button>
         <button className="header-btn">Log In</button>
       </div>
     </header>
