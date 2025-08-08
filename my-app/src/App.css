@@ -1,1 +1,20 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Ngăn scroll nếu không cần thiết */
+}
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full chiều cao màn hình */
+  overflow: hidden;
+}
+
+.page-content {
+  flex: 1; /* Chiếm phần còn lại sau Header và Navbar */
+  overflow-y: auto; /* Chỉ cuộn nếu nội dung nhiều */
+  padding: 100vw;
+  background-color: #f4f4f4;
+}

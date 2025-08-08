@@ -1,0 +1,71 @@
+/* Khung header chính */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #222;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Logo hình tròn */
+.header-logo {
+  width: 50px;
+  height: 50px;
+  background-color: #555;
+  border-radius: 50%;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Khu vực slogan + tên web */
+.header-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Slogan */
+.header-slogan {
+  font-size: 12px;
+  color: #bbb;
+  margin-bottom: 3px;
+  font-style: italic;
+}
+
+/* Tên web */
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Khu vực ngôn ngữ và nút đăng nhập */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Nút ngôn ngữ và đăng nhập */
+.header-btn {
+  background-color: transparent;
+  border: 1px solid #bbb;
+  color: #bbb;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.header-btn:hover {
+  background-color: #555;
+  border-color: #fff;
+  color: #fff;
+}

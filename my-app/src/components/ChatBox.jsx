@@ -19,8 +19,7 @@ export default function ChatBox() {
   return (
     <div className="chat-container">
       {/* logo hình tròn chữ 弁 */}
-      <div className="chat-logo">弁</div>
-
+      <div className="chat-logo"></div>
       {/* khung tin nhắn bot */}
       <div className="chat-messages">
         {messages.map((msg, index) => (
@@ -33,9 +32,6 @@ export default function ChatBox() {
       {/* cột phải: avatar + tin nhắn người dùng */}
       <div className="chat-right">
         <div className="user-message-preview">
-          {messages.length > 0 && messages[messages.length - 2]?.sender === 'user'
-            ? messages[messages.length - 2].text
-            : ''}
         </div>
         <div className="user-avatar"></div>
       </div>
