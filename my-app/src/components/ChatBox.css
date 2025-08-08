@@ -1,7 +1,13 @@
+/*Nay chinh co dinh cho khung cha*/
+:root{
+  --top-offset: 112px;        /* fallback nếu JS chưa kịp set */
+  --gap-below-header: 12px;   /* muốn “thấp hơn xíu” chỉnh ở đây */
+}
+
 /*Khung lon ben ngoai*/
 .chat-container {
   position: fixed;        /* Cố định khung chat vào màn hình (không bị trôi khi cuộn trang). */
-  bottom: 20px;           /* Cách mép dưới */
+  top: calc(var(--top-offset) + var(--gap-below-header)); /* dính ngay dưới header+navbar */
 
   /* canh giữa theo chieu ngang + dịch sang trái bằng 50% chiều rộng để thật sự nằm giữa */
   left: 50%;              
@@ -12,19 +18,20 @@
   flex-direction: row;
   align-items: flex-start;
 
-  width: 70vw; /*Rộng 95% chiều ngang màn hình.*/
-  height: 78vh; /*Cao 60% chiều cao màn hình */
+  width: 55vw; /*Rộng 95% chiều ngang màn hình.*/
+  height: 75.5vh; /*Cao 60% chiều cao màn hình */
 
   /*Không viền, không bo góc, không margin.*/
   border: none;         
-  border-radius: 30px;
+  border-radius: 25px;
   overflow: hidden; /* phần con không được tràn ra ngoài góc bo */
   margin: 0;
 
-  background-color: #837345; /*Màu nền*/
+  background-color: #f9f8f4; /*Màu nền*/
   box-sizing: border-box; /*Tính padding vào trong width/height (đỡ vỡ layout)*/
   z-index: 1000;          /*Nằm trên các phần tử khác (tránh bị che). */
 }
+
 /*Thanh cuon*/
 .chat-messages::-webkit-scrollbar {
   width: 8px;                  /* Độ rộng thanh cuộn */
@@ -33,13 +40,12 @@
   background: transparent;     /* Nền rãnh cuộn */
 }
 .chat-messages::-webkit-scrollbar-thumb {
-  background-color: #706d61; /* Màu nút cuộn */
+  background-color: #f9f8f4; /* Màu nút cuộn */
   border-radius: 4px;          /* Bo góc nút cuộn */
 }
 .chat-messages::-webkit-scrollbar-thumb:hover { 
   background-color: rgba(0, 0, 0, 0.5); /* Đậm hơn khi hover - di vÀO*/
 }
-
 
 /*Khung chat*/
 .chat-messages {
@@ -48,38 +54,38 @@
   overflow-y: auto; /*Khi nội dung chat dài hơn chiều cao, hiện thanh cuộn dọc. Khi ít nội dung thì không hiện thanh cuộn (tự động).*/
   border: none; /*khong vien*/
   padding: 40px; /*Khoảng trống bên trong.*/
-  border-radius: 30px; /*Bo góc riêng cho khung tin nhắn, mềm hơn. Nên đồng bộ với bo góc của .chat-container*/
-  background-color: #858543; /*Màu nền*/
+  border-radius: 20px; /*Bo góc riêng cho khung tin nhắn, mềm hơn. Nên đồng bộ với bo góc của .chat-container*/
+  background-color: #f9f8f4; /*Màu nền*/
   box-sizing: border-box; /*Tính padding vào trong width/height (đỡ vỡ layout)*/
 }
 
 /* bong bong chat chung */
 .message {
-  max-width: 100%; /*Giới hạn chiều rộng tối đa của bong bóng chat bằng 100% chiều ngang vùng chứa */
+  width: fit-content; 
+  max-width: min(50%, 520px); /* bong bóng: GIỚI HẠN NGANG */ 
   padding: 8px 12px; /*Tạo khoảng trống bên trong bong bóng: trên/dưới - trái/phải Giúp chữ không dính sát viền*/
-  border-radius: 12px; /*Bo tròn các góc của bong bóng chat (tất cả 4 góc tròn)*/
+  border-radius: 20px; /*Bo tròn các góc của bong bóng chat (tất cả 4 góc tròn)*/
   margin: 4px 0; /*Tạo khoảng trống 4px trên và dưới giữa các tin nhắn.*/
   word-wrap: break-word; /*Tự xuống dòng nếu từ quá dài (tránh tràn khung)*/
 }
   /* bong bong chat cua Bot tin nhắn bên trái */
 .message.bot {
   align-self: flex-start;  /* căn trái */
-  max-width: min(65%, 520px); /* bong bóng: GIỚI HẠN NGANG */
   margin-right: auto; /*day ve ben trai*/ 
-  background: #f1f5f9;     /* nền xám nhạt */
+  background: #e8d9cd;     /* nền xám nhạt */
   color: #000;
   border-bottom-left-radius: 0; /* góc dưới trái vuông cho đẹp */
 }
   /* bong bong chat cua User tin nhắn bên phải */
 .message.user {
   align-self: flex-end;    /* căn phải */
-  max-width: min(65%, 520px); /* bong bóng: GIỚI HẠN NGANG */
   margin-left: auto; /*day ve ben trai*/ 
-  background: #ffe4cc;     /* nền cam nhạt */
+  background: #efefe9;     /* nền cam nhạt */
   color: #000;
   border-bottom-right-radius: 0; /* góc dưới phải vuông cho đẹp */
 }
 
+/*Phan chinh cua input*/
 .input-section {
   position: absolute;
   bottom: 0;
@@ -88,14 +94,14 @@
   display: flex;
   gap: 8px;
   padding: 10px;
-  background: #f9be08;
+  background: #f9f8f4;
   box-sizing: border-box;
 }
 .input-section input {
   flex: 1;           /* chiếm hết không gian còn lại */
   padding: 10px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 .input-section button {
   padding: 10px 20px;
@@ -103,6 +109,6 @@
   background-color: #1a1a19;
   color: #dfdfd9;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
 }

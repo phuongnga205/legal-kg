@@ -18,13 +18,11 @@ export default function ChatBox() {
 
   return (
     <div className="chat-container">
-      {/* logo hình tròn chữ 弁 */}
-      <div className="chat-logo"></div>
       {/* khung tin nhắn bot */}
       <div className="chat-messages">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
-            {msg.text}
+              {msg.text}
           </div>
         ))}
       </div>

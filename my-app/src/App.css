@@ -16,5 +16,5 @@ html, body, #root {
   flex: 1; /* Chiếm phần còn lại sau Header và Navbar */
   overflow-y: auto; /* Chỉ cuộn nếu nội dung nhiều */
   padding: 100vw;
-  background-color: #f4f4f4;
+  background-color: #72383d;
 }

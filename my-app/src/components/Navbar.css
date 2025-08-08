@@ -25,9 +25,9 @@
 }
 
 .navbar a:hover {
-  color: #ffcc00;
+  color: #e5727c;
 }
 
 .navbar .active {
-  border-bottom: 2px solid #ffcc00;
+  border-bottom: 2px solid #e5727c;
 }
