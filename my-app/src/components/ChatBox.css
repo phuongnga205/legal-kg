@@ -7,7 +7,7 @@
 /*Khung lon ben ngoai*/
 .chat-container {
   position: fixed;        /* Cố định khung chat vào màn hình (không bị trôi khi cuộn trang). */
-  top: calc(var(--top-offset) + var(--gap-below-header)); /* dính ngay dưới header+navbar */
+  top: calc(112px + ((100vh - 85px - 75.5vh) / 2)); /* dính ngay dưới header+navbar */
 
   /* canh giữa theo chieu ngang + dịch sang trái bằng 50% chiều rộng để thật sự nằm giữa */
   left: 50%;              
@@ -30,6 +30,14 @@
   background-color: #f9f8f4; /*Màu nền*/
   box-sizing: border-box; /*Tính padding vào trong width/height (đỡ vỡ layout)*/
   z-index: 1000;          /*Nằm trên các phần tử khác (tránh bị che). */
+
+    transition: top 0.3s ease; /*hiệu ứng mượt hơn khi điều chỉnh độ nhỏ lớn của khung*/
+}
+
+@media (max-height: 700px) {  /*Khi chiều cao nhỏ hơn 700px, bỏ căn giữa, chỉ dính dưới header*/
+  .chat-container {
+    top: calc(var(--top-offset) + var(--gap-below-header)); /* dính ngay dưới header+navbar */
+  }
 }
 
 /*Thanh cuon*/
@@ -44,7 +52,7 @@
   border-radius: 4px;          /* Bo góc nút cuộn */
 }
 .chat-messages::-webkit-scrollbar-thumb:hover { 
-  background-color: rgba(0, 0, 0, 0.5); /* Đậm hơn khi hover - di vÀO*/
+  background-color: rgba(234, 150, 150, 0.5); /* Đậm hơn khi hover - di vÀO*/
 }
 
 /*Khung chat*/
@@ -53,19 +61,51 @@
   height: calc(78vh - 60px); /*Chiều cao tính theo màn hình: bằng 60% chiều cao viewport, rồi trừ đi 80px*/
   overflow-y: auto; /*Khi nội dung chat dài hơn chiều cao, hiện thanh cuộn dọc. Khi ít nội dung thì không hiện thanh cuộn (tự động).*/
   border: none; /*khong vien*/
-  padding: 40px; /*Khoảng trống bên trong.*/
+  padding: 30px; /*Khoảng trống bên trong.*/
   border-radius: 20px; /*Bo góc riêng cho khung tin nhắn, mềm hơn. Nên đồng bộ với bo góc của .chat-container*/
   background-color: #f9f8f4; /*Màu nền*/
   box-sizing: border-box; /*Tính padding vào trong width/height (đỡ vỡ layout)*/
 }
 
+/*Container chua avatar*/
+    /* HÀNG TIN NHẮN = GRID 3 CỘT: [avatar trái] [bubble] [avatar phải] */
+.msg-row{
+  display: flex;
+  grid-template-columns: 40px 1fr 40px; /* gutter cố định 40px */
+  column-gap: 8px;
+  align-items: end;      /* MỌI phần tử trong hàng căn đáy */
+  margin: 8px 0;
+}
+
+    /* Avatar chung trong hàng */
+.msg-row .avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;          /* tròn chuẩn */
+  object-fit: cover;
+  box-shadow: 0 1px 2px rgba(0,0,0,.12);
+  justify-self: center;        /* giữa theo ngang trong cột gutter */
+  transform: translateY(-2px); /*can chinh vi tri avatar theo mong muon */
+}
+
+
+    /* BOT: avatar cột 1, bubble cột 2, bubble căn trái */
+.msg-row.bot .avatar{   grid-column: 1; }
+.msg-row.bot .message{  grid-column: 2; justify-self: start; }
+
+    /* USER: avatar cột 3, bubble cột 2, bubble căn phải */
+.msg-row.user .avatar{  grid-column: 3; }
+.msg-row.user .message{ grid-column: 2; justify-self: end; }
+
+
 /* bong bong chat chung */
 .message {
   width: fit-content; 
-  max-width: min(50%, 520px); /* bong bóng: GIỚI HẠN NGANG */ 
+  max-width: min(60%, 520px);  /* Bubble chung (giới hạn rộng noi dung) */
   padding: 8px 12px; /*Tạo khoảng trống bên trong bong bóng: trên/dưới - trái/phải Giúp chữ không dính sát viền*/
   border-radius: 20px; /*Bo tròn các góc của bong bóng chat (tất cả 4 góc tròn)*/
-  margin: 4px 0; /*Tạo khoảng trống 4px trên và dưới giữa các tin nhắn.*/
+  margin: 0px 0; /*Tạo khoảng trống 4px trên - dưới giữa các tin nhắn.*/
+  white-space: pre-line; /* giữ xuống dòng từ \n */
   word-wrap: break-word; /*Tự xuống dòng nếu từ quá dài (tránh tràn khung)*/
 }
   /* bong bong chat cua Bot tin nhắn bên trái */
@@ -96,19 +136,30 @@
   padding: 10px;
   background: #f9f8f4;
   box-sizing: border-box;
+  flex-wrap: nowrap; /* Ngăn không cho xuống dòng */
 }
 .input-section input {
   flex: 1;           /* chiếm hết không gian còn lại */
+  min-width: 0; /* Cho phép co lại mà không phá layout */
   padding: 10px;
   font-size: 16px;
   border-radius: 20px;
 }
 .input-section button {
   padding: 10px 20px;
+  flex-shrink: 0; /* Không cho nút co nhỏ lại */
   font-size: 16px;
   background-color: #1a1a19;
   color: #dfdfd9;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  white-space: nowrap; /* Không cho text trong nút bị xuống dòng */
+}
+@media (max-width: 400px) { /*khi cửa sổ quá hẹp thì sẽ có theo chiều ngang*/
+  .input-section input,
+  .input-section button {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
