@@ -1,4 +1,4 @@
-LAWYER_ID,NAME_VN,NAME_EN,NAME_JP,FIRM_VN,FIRM_EN,FIRM_JP,SPECIALTY_VN,SPECIALTY_EN,SPECIALTY_JP,EMAIL,TELEPHONE NUMBER
+LAWYER_ID,NAME_VN,NAME_EN,NAME_JP,FIRM_VN,FIRM_EN,FIRM_JP,SPECIALTY_VN,SPECIALTY_EN,SPECIALTY_JP,EMAIL,TELEPHONE_NUMBER
 L0001,Nguyễn Thị Mai,Mai Thi Nguyen,グエン・ティ・マイ,Công ty luật A,Law Firm A,法律事務所A,Sở hữu trí tuệ,Intellectual Property,知的財産,mai.nguyen@example.com,0912 345 678
 L0002,Trần Văn Hưng,Hung Van Tran,トラン・ヴァン・フン,Công ty luật B,Law Firm B,法律事務所B,Sở hữu trí tuệ,Intellectual Property,知的財産,hung.tran@example.com,0934 567 890
 L0003,Lê Minh Tuấn,Tuan Minh Le,レ・ミン・トゥアン,Công ty luật B,Law Firm B,法律事務所B,Sở hữu trí tuệ,Intellectual Property,知的財産,tuan.le@example.com,0908 123 456
