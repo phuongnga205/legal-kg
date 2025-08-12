@@ -1,0 +1,17 @@
+.page-content {
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  min-height: 500px;
+  padding: 20px;
+}
+
+.lawyer-list {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 1rem;
+  max-height: 600px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10;
+}

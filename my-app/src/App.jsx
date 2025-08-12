@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import BenPage from './pages/BenPage';
+import Lawyer from './pages/Lawyer';
 import './App.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/benchan" element={<BenPage />} />
+            <Route path="/lawyer" element={<Lawyer />} />
           </Routes>
         </div>
       </div>
