@@ -1,14 +1,15 @@
-/* Khung header chính */
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 15px 30px;
   background-color: #222;
   color: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Logo hình tròn */
 .header-logo {
   width: 50px;
   height: 50px;
@@ -22,16 +23,16 @@
   font-size: 22px;
   color: #fff;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
-/* Khu vực slogan + tên web */
 .header-info {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  min-width: 0; /* tránh lỗi flex tràn */
 }
 
-/* Slogan */
 .header-slogan {
   font-size: 12px;
   color: #bbb;
@@ -39,20 +40,22 @@
   font-style: italic;
 }
 
-/* Tên web */
 .header-title {
   font-size: 20px;
   font-weight: bold;
+  white-space: nowrap; /* tránh xuống dòng */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Khu vực ngôn ngữ và nút đăng nhập */
 .header-right {
   display: flex;
   align-items: center;
   gap: 15px;
+  min-width: 150px;
+  flex-shrink: 0;
 }
 
-/* Nút ngôn ngữ và đăng nhập */
 .header-btn {
   background-color: transparent;
   border: 1px solid #bbb;
@@ -62,6 +65,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .header-btn:hover {

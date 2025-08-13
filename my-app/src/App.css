@@ -2,7 +2,7 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Ngăn scroll nếu không cần thiết */
+  overflow-x: hidden; /* Không cho scroll ngang */
 }
 
 .app-container {
@@ -12,9 +12,31 @@ html, body, #root {
   overflow: hidden;
 }
 
+.header, .navbar {
+  position: sticky; /* hoặc fixed nếu bạn dùng fixed */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* Giữ nguyên màu nền và style hiện có */
+}
+
 .page-content {
-  flex: 1; /* Chiếm phần còn lại sau Header và Navbar */
-  overflow-y: auto; /* Chỉ cuộn nếu nội dung nhiều */
-  padding: 100vw;
-  background-color: #72383d;
+  flex: 1; /* Chiếm phần còn lại sau header + navbar */
+  overflow-y: auto; /* Cho phép scroll dọc */
+  overflow-x: hidden; /* KHÔNG cho scroll ngang */
+  
+  padding-top: var(--top-offset, 0px); /* Đảm bảo tránh header/navbar */
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  
+  min-height: calc(100vh - var(--top-offset, 0px));
+  width: 100vw; /* Chiếm 100% chiều rộng viewport */
+  box-sizing: border-box;
+  background-color: #72383d; /* Giữ màu nền bạn muốn */
+}
+
+.page-content > * {
+  max-width: 100vw;
+  box-sizing: border-box;
 }

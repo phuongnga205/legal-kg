@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import BenPage from './pages/BenPage';
-import Lawyer from './pages/Lawyer';
+import LawyerPage from './pages/LawyerPage';
 import './App.css';
 
 function App() {
@@ -32,13 +32,13 @@ function App() {
       <div className="app-container">
         <Header />
         <Navbar />
-        <div className="page-content">
+        <main className="page-content" style={{ paddingTop: 'var(--top-offset, 0px)'}}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/benchan" element={<BenPage />} />
-            <Route path="/lawyer" element={<Lawyer />} />
+            <Route path="/lawyer" element={<LawyerPage />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </Router>
   );
