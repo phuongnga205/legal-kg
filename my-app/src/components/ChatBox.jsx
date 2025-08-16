@@ -5,16 +5,47 @@ const botAvatar = '/bot.png'; //hinh de trong thư mục public
 const userAvatar = '/user.png'; //hinh de trong thư mục public
 
 export default function ChatBox() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+     { sender: 'bot', text: 'Tôi là Benちゃん.\nTôi có thể giúp gì cho bạn?' }
+  ]);
   const [input, setInput] = useState('');
   const chatRef = useRef(null);
+   // thêm ref cho textarea
+  const inputRef = useRef(null);
 
+   // hàm autoGrow
+  const autoGrow = () => {
+    const el = inputRef.current;
+    if (!el) return;
+
+    const cs  = getComputedStyle(el);
+    const MIN = parseFloat(cs.minHeight) || 44; // bằng nút
+    const MAX = 160;
+
+    // Khi rỗng: luôn đúng bằng MIN (bằng nút)
+    if (!el.value.trim()) {
+      el.style.height = MIN + 'px';
+      el.style.overflowY = 'hidden';
+      return;
+    }
+
+    // Có nội dung: nở dần tới MAX rồi mới cuộn
+    el.style.height = 'auto';
+    const h = Math.min(el.scrollHeight, MAX);
+    el.style.height = Math.max(h, MIN) + 'px';
+    el.style.overflowY = el.scrollHeight > MAX ? 'auto' : 'hidden';
+  };
   //Moi khi message thay doi, no se keo thanh cuon xuong day
   useEffect(() => {
     if(chatRef.current){
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   },[messages]);
+
+  // auto-resize lại khi nội dung input đổi
+  useEffect(() => {
+    autoGrow();
+  }, [input]);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -51,12 +82,21 @@ export default function ChatBox() {
 
       {/* ô nhập + nút gửi */}
       <div className="input-section">
-        <input
-          type="text"
+        <textarea
+          ref={inputRef}
+          rows={1}
           value={input}
           placeholder="Nhập câu hỏi của bạn..."
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          onInput={autoGrow}
+          onKeyDown={(e) => {
+            if (e.isComposing) return;
+            //Enter = gửi, Shift+Enter = xuống dòng
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSend();
+            }
+          }}
         />
         <button onClick={handleSend}>Gửi</button>
       </div>

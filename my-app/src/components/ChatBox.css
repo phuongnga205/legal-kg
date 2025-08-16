@@ -101,7 +101,7 @@
 /* bong bong chat chung */
 .message {
   width: fit-content; 
-  max-width: min(60%, 520px);  /* Bubble chung (giới hạn rộng noi dung) */
+  max-width: min(50%, 520px);  /* Bubble chung (giới hạn rộng noi dung) */
   padding: 8px 12px; /*Tạo khoảng trống bên trong bong bóng: trên/dưới - trái/phải Giúp chữ không dính sát viền*/
   border-radius: 20px; /*Bo tròn các góc của bong bóng chat (tất cả 4 góc tròn)*/
   margin: 0px 0; /*Tạo khoảng trống 4px trên - dưới giữa các tin nhắn.*/
@@ -126,40 +126,68 @@
 }
 
 /*Phan chinh cua input*/
-.input-section {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  gap: 8px;
-  padding: 10px;
+.input-section { /*Tạo thanh nhập tin nhắn luôn nằm dưới cùng màn hình, trải ngang 100%, input + button nằm trên một hàng, có khoảng cách và padding.*/
+  position: absolute; /* Đặt vị trí tuyệt đối, bám theo thẻ cha (relative/absolute) */
+  bottom: 0; /* Cố định sát mép dưới */
+  left: 0; /* Cố định sát mép trái */
+  --control-h: 44px; /* chiều cao chung cho cả 2 */
+  width: 100%; /* Trải ngang toàn bộ chiều rộng */
+  display: flex;  /* Dùng Flexbox để sắp xếp input + button */
+  gap: 10px; /* Khoảng cách giữa các phần tử con */
+  padding: 10px 14px; /* Khoảng cách bên trong khung */
+  align-items: flex-end;   /* nút Gửi thẳng đáy khi textarea cao lên */
   background: #f9f8f4;
-  box-sizing: border-box;
-  flex-wrap: nowrap; /* Ngăn không cho xuống dòng */
+  box-sizing: border-box; /* Tính cả padding và border vào width tổng */
+  flex-wrap: nowrap; /* Không cho input và button xuống hàng */
 }
-.input-section input {
-  flex: 1;           /* chiếm hết không gian còn lại */
+.input-section textarea { /*Input sẽ tự động giãn ra hết chỗ trống còn lại, có padding thoải mái, chữ rõ ràng, bo góc tròn để đẹp hơn.*/
+  flex: 1 1 auto;           /* chiếm hết không gian còn lại */
   min-width: 0; /* Cho phép co lại mà không phá layout */
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
+  /*bắt đầu 1 dòng, nở dần tới 160px*/
+  min-height: var(--control-h);  /* ban đầu cao bằng nút */
+  max-height: 160px; /* trần */
+  height: auto; /* để JS điều khiển */
+  line-height:  1.45; /* canh chữ khi ở 20px */
+
+  box-sizing: border-box;      /* ✅ quan trọng: tính cả padding/border vào height */
+  padding: 10px 14px;  /* Khoảng cách bên trong input */
+  font-size: 16px; /* Kích thước chữ */
+  border-radius: 20px; /* Bo tròn góc input */
+  scrollbar-gutter: stable;      /* không giật layout khi xuất hiện scrollbar */
+  /* Firefox: thanh cuộn mảnh */
+  scrollbar-width: thin;
+  scrollbar-color: #949191 transparent;
 }
-.input-section button {
-  padding: 10px 20px;
-  flex-shrink: 0; /* Không cho nút co nhỏ lại */
-  font-size: 16px;
+
+
+  /* Chrome/Edge/Safari: thanh cuộn mảnh bên trong textarea */
+.input-section textarea::-webkit-scrollbar { width: 10px; }
+.input-section textarea::-webkit-scrollbar-track { background: transparent; }
+.input-section textarea::-webkit-scrollbar-thumb {
+  background-color: #cfcfcf;
+  border-radius: 999px;
+  border: 4px solid transparent;   /* tạo cảm giác mảnh */
+  background-clip: padding-box;
+}
+.input-section textarea::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+.input-section textarea::-webkit-scrollbar-corner { background: transparent; }
+
+.input-section button {/*Nút luôn giữ kích thước cố định, đẹp mắt, bo góc tròn, có màu nền tối và chữ sáng.*/
+  height: var(--control-h); /*cùng chiều cao với textarea ban đầu */
+  padding: 0px 20px; /* Khoảng cách bên trong: 10px trên/dưới, 20px trái/phải */
+  flex-shrink: 0; /* Không cho nút co nhỏ lại khi màn hình hẹp */
+  font-size: 16px; /* Kích thước chữ nút */
   background-color: #1a1a19;
-  color: #dfdfd9;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  color: #dfdfd9; /* Màu chữ xám nhạt */
+  border: none; /* Bỏ viền */
+  border-radius: 20px;  /* Bo tròn góc nút */
+  cursor: pointer; /* Khi hover hiện icon bàn tay */
   white-space: nowrap; /* Không cho text trong nút bị xuống dòng */
 }
-@media (max-width: 400px) { /*khi cửa sổ quá hẹp thì sẽ có theo chiều ngang*/
-  .input-section input,
+@media (max-width: 400px) { /*Khi màn hình hẹp (≤400px, ví dụ trên điện thoại nhỏ), input và nút sẽ thu gọn lại (chữ nhỏ hơn, padding nhỏ hơn) để không bị chiếm quá nhiều diện tích.*/
+  .input-section textarea,
   .input-section button {
-    font-size: 14px;
-    padding: 8px;
+    font-size: 14px; /* Giảm cỡ chữ khi màn hình nhỏ */
+    padding: 8px; /* Giảm padding để vừa hơn */
   }
 }
