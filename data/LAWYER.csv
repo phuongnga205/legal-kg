@@ -1,0 +1,11 @@
+LAWYER_ID,NAME_VN,NAME_EN,NAME_JP,FIRM_VN,FIRM_EN,FIRM_JP,SPECIALTY_VN,SPECIALTY_EN,SPECIALTY_JP,EMAIL,TELEPHONE_NUMBER
+L0001,Nguyễn Thị Mai,Mai Thi Nguyen,グエン・ティ・マイ,Công ty luật A,Law Firm A,法律事務所A,Sở hữu trí tuệ,Intellectual Property,知的財産,mai.nguyen@example.com,0912 345 678
+L0002,Trần Văn Hưng,Hung Van Tran,トラン・ヴァン・フン,Công ty luật B,Law Firm B,法律事務所B,Sở hữu trí tuệ,Intellectual Property,知的財産,hung.tran@example.com,0934 567 890
+L0003,Lê Minh Tuấn,Tuan Minh Le,レ・ミン・トゥアン,Công ty luật B,Law Firm B,法律事務所B,Sở hữu trí tuệ,Intellectual Property,知的財産,tuan.le@example.com,0908 123 456
+L0004,Phạm Thị Lan,Lan Thi Pham,ファム・ティ・ラン,Công ty luật C,Law Firm C,法律事務所C,Sở hữu trí tuệ,Intellectual Property,知的財産,lan.pham@example.com,0966 654 321
+L0005,Hoàng Đức Anh,Anh Duc Hoang,ホアン・ドゥック・アン,Công ty luật D,Law Firm D,法律事務所D,Sở hữu trí tuệ,Intellectual Property,知的財産,anh.hoang@example.com,0987 765 432
+L0006,Đặng Thùy Dương,Duong Thuy Dang,ダン・トゥイ・ドゥオン,Công ty luật A,Law Firm A,法律事務所A,Sở hữu trí tuệ,Intellectual Property,知的財産,duong.dang@example.com,0913 333 444
+L0007,Vũ Ngọc Hạnh,Hanh Ngoc Vu,ヴー・ゴック・ハン,Công ty luật D,Law Firm D,法律事務所D,Sở hữu trí tuệ,Intellectual Property,知的財産,hanh.vu@example.com,0977 888 999
+L0008,Bùi Quang Khánh,Khanh Quang Bui,ブイ・クアン・カーン,Công ty luật D,Law Firm D,法律事務所D,Sở hữu trí tuệ,Intellectual Property,知的財産,khanh.bui@example.com,0944 222 111
+L0009,Đỗ Thị Thu,Thu Thi Do,ドゥ・ティ・トゥ,Công ty luật B,Law Firm B,法律事務所B,Sở hữu trí tuệ,Intellectual Property,知的財産,thu.do@example.com,0955 666 777
+L0010,Nguyễn Ngọc Huyền,Huyen Ngoc Nguyen,グエン・ゴック・フエン,Công ty luật C,Law Firm C,法律事務所C,Sở hữu trí tuệ,Intellectual Property,知的財産,huyen.nguyen@example.com,0909 000 111
