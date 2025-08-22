@@ -1,0 +1,154 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Không cho scroll ngang */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full chiều cao màn hình */
+  overflow: hidden;
+}
+
+.header, .navbar {
+  position: sticky; /* hoặc fixed nếu bạn dùng fixed */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* Giữ nguyên màu nền và style hiện có */
+}
+
+.page-content {
+  flex: 1; /* Chiếm phần còn lại sau header + navbar */
+  overflow-y: auto; /* Cho phép scroll dọc */
+  overflow-x: hidden; /* KHÔNG cho scroll ngang */
+  
+  padding-top: var(--top-offset, 0px); /* Đảm bảo tránh header/navbar */
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  
+  min-height: calc(100vh - var(--top-offset, 0px));
+  width: 100vw; /* Chiếm 100% chiều rộng viewport */
+  box-sizing: border-box;
+  background-color: #72383d; /* Giữ màu nền bạn muốn */
+}
+
+.page-content > * {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/*mock*/
+/* ==== Result cards (scoped) ==== */
+:root {
+  --brand-bg: #72383d;           /* màu nền trang của bạn */
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-text: #1f2937;
+  --card-subtext: #555;
+  --link: #1d4ed8;
+  --link-hover: #1e40af;
+}
+
+.page-content .results section h3 { 
+  margin: 12px 0;
+  color: #fff;                    /* tiêu đề section trên nền sẫm */
+}
+
+.page-content .results {
+  padding: 12px 16px;             /* khoảng đệm quanh lưới */
+}
+
+.page-content .grid { 
+  display: grid; 
+  gap: 12px; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Card base */
+.page-content .card { 
+  border: 1px solid var(--card-border); 
+  border-radius: 12px; 
+  padding: 12px; 
+  background: var(--card-bg); 
+  color: var(--card-text);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+.page-content .card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.1);
+}
+
+.page-content .card-title { 
+  font-weight: 700; 
+}
+.page-content .card-subtitle { 
+  font-size: .95rem; 
+  color: var(--card-subtext); 
+  margin-bottom: 6px; 
+}
+.page-content .card-body { 
+  margin-top: 8px; 
+  white-space: pre-wrap;
+}
+.page-content .card-link { 
+  display: inline-block; 
+  margin-top: 6px; 
+  color: var(--link);
+  text-decoration: none;
+}
+.page-content .card-link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .page-content .results { padding: 8px; }
+  .page-content .grid { gap: 10px; grid-template-columns: 1fr; }
+}
+/* App.css – thêm ở cuối */
+.page-content .askip-form label { color:#fff; font-weight:600; display:block; }
+.page-content .askip-form textarea {
+  background:#fff; color:#111; width:100%; border-radius:12px; padding:10px; border:1px solid #e5e7eb;
+}
+.page-content .askip-form button {
+  background:#111; color:#fff; border-radius:12px; padding:8px 14px; border:1px solid transparent;
+}
+
+/*Dang nhap + Dang Ky*/
+.auth-page {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.auth-form button {
+  padding: 10px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
