@@ -1,0 +1,16 @@
+import pandas as pd
+
+# Ví dụ link raw GitHub
+url_clause = "https://raw.githubusercontent.com/phuongnga205/legal-kg/main/data/CLAUSE.csv"
+url_article = "https://raw.githubusercontent.com/phuongnga205/legal-kg/main/data/ARTICLE.csv"
+
+# Đọc trực tiếp từ GitHub
+clause_df = pd.read_csv(url_clause, encoding="utf-8")
+article_df = pd.read_csv(url_article, encoding="utf-8")
+
+# Chuẩn hóa tên cột
+clause_df.columns = clause_df.columns.str.strip().str.upper()
+article_df.columns = article_df.columns.str.strip().str.upper()
+
+print("Clause columns:", clause_df.columns.tolist())
+print("Article columns:", article_df.columns.tolist())
