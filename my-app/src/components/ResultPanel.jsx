@@ -1,16 +1,13 @@
-import ClauseCard from './ClauseCard';
+import ArticleCard from './ArticleCard';
 import LawyerCard from './LawyerCard';
 
-export default function ResultPanel({ data, lang }) {   // <-- nhận thêm lang từ cha
+export default function ResultPanel({ data }) {
   if (!data) return null;
 
-  const clauses = data?.CLAUSES ?? [];
-  const lawyers = data?.LAWYERS ?? [];
+  const articles = data.ARTICLES || [];
+  const lawyers = data.LAWYERS || [];
 
-  const hasClauses = clauses.length > 0;
-  const hasLawyers = lawyers.length > 0;
-
-  if (!hasClauses && !hasLawyers) {
+  if (articles.length === 0 && lawyers.length === 0) {
     return (
       <div className="results">
         <div className="card" style={{ marginTop: 12 }}>
@@ -23,33 +20,23 @@ export default function ResultPanel({ data, lang }) {   // <-- nhận thêm lang
 
   return (
     <div className="results">
-      {hasClauses && (
+      {articles.length > 0 && (
         <section>
-          <h3>Suggested Clauses ({clauses.length})</h3>
+          <h3>Suggested Articles</h3>
           <div className="grid">
-            {clauses.map((item, idx) => {
-              const key =
-                item?.CLAUSE?.CLAUSE_ID ||
-                item?.ARTICLE?.ARTICLE_ID ||
-                `clause-${idx}`;
-              return (
-                <ClauseCard key={key} item={item} lang={lang} />   
-              );
-            })}
+            {articles.map((a, idx) => (
+              <ArticleCard key={idx} article={a} />
+            ))}
           </div>
         </section>
       )}
 
-      {hasLawyers && (
-        <section style={{ marginTop: 24 }}>
-          <h3>Recommended Lawyers ({lawyers.length})</h3>
+      {lawyers.length > 0 && (
+        <section>
+          <h3>Recommended Lawyers</h3>
           <div className="grid">
             {lawyers.map((l, idx) => (
-              <LawyerCard
-                key={l?.LAWYER_ID || `lawyer-${idx}`}
-                lawyer={l}
-                lang={lang}  
-              />
+              <LawyerCard key={idx} lawyer={l} />
             ))}
           </div>
         </section>

@@ -1,13 +1,24 @@
 import { useState } from 'react';
-import ResultPanel from './ResultPanel'; //component con, sẽ render chi tiết dữ liệu kết quả (ClauseCard, LawyerCard...).
+import ResultPanel from './ResultPanel';
 
-//Khai báo component ResultBubble
-export default function ResultBubble({ title = 'IP Chatbot — Results', data, onExpand }) {
+export default function ResultBubble({ data, onExpand }) {
+  if (!data) return null;
+
+  // Tính tổng clause trong tất cả articles
+  const totalClauses = (data.articles || []).reduce(
+    (sum, a) => sum + (a.clauses?.length || 0),
+    0
+  );
+  const totalLawyers = (data.lawyers || []).length;
+
+  // Tiêu đề động
+  const title = `IP Chatbot — Results (${totalClauses} clauses · ${totalLawyers} lawyers)`;
+
   return (
     <div className="message bot result-bubble">
       <button
         className="result-header"
-        onClick={() => onExpand({ title, data })}  // ✅ Gọi hàm cha
+        onClick={() => onExpand({ title, data })}
         title="Xem chi tiết"
       >
         <span className="result-icon" aria-hidden>📄</span>

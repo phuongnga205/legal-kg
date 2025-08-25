@@ -1,33 +1,46 @@
-const toList = (s) =>
-  (typeof s === "string" ? s.split(/[;,]/) : [])
-    .map(x => x.trim())
-    .filter(Boolean);
-
-export default function LawyerCard({ lawyer, lang }) {
+export default function LawyerCard({ lawyer, lang = "EN" }) {
   if (!lawyer) return null;
 
+  // chọn đúng ngôn ngữ
   const name =
-    (lang === "EN" && lawyer.NAME_EN) ||
-    (lang === "JP" && lawyer.NAME_JP) ||
-    (lang === "VN" && lawyer.NAME_VN) ||
+    (lang === "EN" && lawyer.name_en) ||
+    (lang === "JP" && lawyer.name_jp) ||
+    (lang === "VN" && lawyer.name_vn) ||
     "";
 
-  const specs = toList(
-    (lang === "EN" && lawyer.SPECIALTY_EN) ||
-    (lang === "JP" && lawyer.SPECIALTY_JP) ||
-    (lang === "VN" && lawyer.SPECIALTY_VN)
-  );
+  const firm =
+    (lang === "EN" && lawyer.firm_en) ||
+    (lang === "JP" && lawyer.firm_jp) ||
+    (lang === "VN" && lawyer.firm_vn) ||
+    "";
 
-  const langs = toList(lawyer.LANGUAGES);
+  const specialty =
+    (lang === "EN" && lawyer.specialty_en) ||
+    (lang === "JP" && lawyer.specialty_jp) ||
+    (lang === "VN" && lawyer.specialty_vn) ||
+    "";
+
+  // labels theo ngôn ngữ
+  const labels = {
+    EN: { specialty: "Specialty", email: "Email", phone: "Phone" },
+    JP: { specialty: "専門", email: "メール", phone: "電話" },
+    VN: { specialty: "Chuyên môn", email: "Email", phone: "Điện thoại" },
+  };
+  const t = labels[lang] || labels.EN;
 
   return (
     <div className="card lawyer-card">
       <div className="card-title">{name}</div>
-      <div className="card-subtitle">{lawyer.FIRM || ""}</div>
-      <div className="card-row"><strong>Specialties:</strong> {specs.join(", ")}</div>
-      <div className="card-row"><strong>Languages:</strong> {langs.join(", ")}</div>
-      <div className="card-row"><strong>Email:</strong> {lawyer.EMAIL || "—"}</div>
-      <div className="card-row"><strong>Phone:</strong> {lawyer.PHONE || "—"}</div>
+      {firm && <div className="card-subtitle">{firm}</div>}
+      <div className="card-row">
+        <strong>{t.specialty}:</strong> {specialty || "—"}
+      </div>
+      <div className="card-row">
+        <strong>{t.email}:</strong> {lawyer.email || "—"}
+      </div>
+      <div className="card-row">
+        <strong>{t.phone}:</strong> {lawyer.phone || "—"}
+      </div>
     </div>
   );
 }
