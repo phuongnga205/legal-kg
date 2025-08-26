@@ -1,0 +1,81 @@
+/* Khung bao quanh để căn giữa form giữa màn hình (trừ phần header) */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;  /* 👈 căn giữa ngang */
+  align-items: center;      /* 👈 căn giữa dọc */
+  background: #f5f5f5;      /* 👈 màu nền (có thể đổi tuỳ ý) */
+  width: auto;
+  z-index: 10;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Khung form chính */
+.auth-page {
+  width: 450px;  /* 👈 giảm xuống */
+  margin: auto; /* căn giữa */
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 24px;     /* 👈 giảm padding cho nhẹ hơn */
+  font-size: 16px;
+}
+
+
+/* Tiêu đề của form (Đăng nhập / Đăng ký) */
+.auth-page h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* Form chứa input + button */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;   /* khoảng cách giữa các input và button */
+}
+
+/* Nhóm input + icon */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon trong input */
+.input-group .icon {
+  position: absolute;
+  left: 20px;      /* icon nằm sát bên trái input */
+  color: #666;     /* màu xám */
+  font-size: 20px; /* cỡ icon */
+}
+
+/* Input */
+.input-group input {
+  width: 100%;
+  padding: 14px 14px 14px 50px; /* 👈 chừa khoảng trống bên trái cho icon */
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 30px; /* 👈 bo tròn input */
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Nút bấm (login/signup) */
+.auth-form button {
+  padding: 14px;
+  background: #222;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px; /* 👈 bo tròn nút */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Hiệu ứng hover cho nút */
+.auth-form button:hover {
+  background: #444;
+}

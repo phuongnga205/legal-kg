@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import "./User.css";
 
 export default function LoginPage({ lang, setUser }) {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -35,17 +37,40 @@ export default function LoginPage({ lang, setUser }) {
   };
 
   const text = {
-    EN: { title: "Log In", email: "Email", password: "Password", submit: "Log In" },
+    EN: { title: "LOGIN", email: "Email", password: "Password", submit: "LOGIN" },
     JP: { title: "ログイン", email: "メール", password: "パスワード", submit: "ログイン" },
-    VN: { title: "Đăng nhập", email: "Email", password: "Mật khẩu", submit: "Đăng nhập" },
+    VN: { title: "ĐĂNG NHẬP", email: "Email", password: "Mật khẩu", submit: "Đăng nhập" },
   }[lang];
 
   return (
     <div className="auth-page">
       <h2>{text.title}</h2>
       <form onSubmit={handleSubmit} className="auth-form">
-        <input type="email" name="email" placeholder={text.email} value={form.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder={text.password} value={form.password} onChange={handleChange} required />
+        {/* 📧 input email */}
+        <div className="input-group">
+          <FaEnvelope className="icon" />
+          <input
+            type="email"
+            name="email"
+            placeholder={text.email}
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* 🔑 input mật khẩu */}
+        <div className="input-group">
+          <FaLock className="icon" />
+          <input
+            type="password"
+            name="password"
+            placeholder={text.password}
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button type="submit">{text.submit}</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}

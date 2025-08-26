@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import "./User.css";
+
 
 export default function RegisterPage({ lang }) {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -35,7 +38,7 @@ export default function RegisterPage({ lang }) {
   };
 
   const text = {
-    EN: { title: "Sign Up", name: "Name", email: "Email", password: "Password", submit: "Sign Up" },
+    EN: { title: "SIGN UP", name: "Name", email: "Email", password: "Password", submit: "Sign Up" },
     JP: { title: "サインアップ", name: "名前", email: "メール", password: "パスワード", submit: "登録" },
     VN: { title: "Đăng ký", name: "Tên", email: "Email", password: "Mật khẩu", submit: "Đăng ký" },
   }[lang];
@@ -44,9 +47,44 @@ export default function RegisterPage({ lang }) {
     <div className="auth-page">
       <h2>{text.title}</h2>
       <form onSubmit={handleSubmit} className="auth-form">
-        <input type="text" name="name" placeholder={text.name} value={form.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder={text.email} value={form.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder={text.password} value={form.password} onChange={handleChange} required />
+        {/* 👤 input tên */}
+        <div className="input-group">
+          <FaUser className="icon" />
+          <input
+            type="text"
+            name="name"
+            placeholder={text.name}
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* 📧 input email */}
+        <div className="input-group">
+          <FaEnvelope className="icon" />
+          <input
+            type="email"
+            name="email"
+            placeholder={text.email}
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* 🔑 input mật khẩu */}
+        <div className="input-group">
+          <FaLock className="icon" />
+          <input
+            type="password"
+            name="password"
+            placeholder={text.password}
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button type="submit">{text.submit}</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
