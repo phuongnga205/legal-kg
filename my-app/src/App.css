@@ -33,7 +33,12 @@ html, body, #root {
   min-height: calc(100vh - var(--top-offset, 0px));
   width: 100vw; /* Chiếm 100% chiều rộng viewport */
   box-sizing: border-box;
-  background-color: #72383d; /* Giữ màu nền bạn muốn */
+  /* background-color: #72383d;  Giữ màu nền bạn muốn */
+  background: linear-gradient(
+    to bottom,
+    #72383d,   /* gốc */
+    #3e2326    /* nhạt hơn cùng tông */
+  );
 }
 
 .page-content > * {
@@ -44,8 +49,8 @@ html, body, #root {
 /*mock*/
 /* ==== Result cards (scoped) ==== */
 :root {
-  --brand-bg: #72383d;           /* màu nền trang của bạn */
-  --card-bg: #ffffff;
+  --brand-bg: linear-gradient(to bottom, #72383d, #3e2326);   /* ombre nâu đỏ */
+  --card-bg: radial-gradient(circle, #ffffffac, #ffffff);    /* trắng → xám nhạt */
   --card-border: #e5e7eb;
   --card-text: #1f2937;
   --card-subtext: #555;
@@ -111,15 +116,25 @@ html, body, #root {
   .page-content .results { padding: 8px; }
   .page-content .grid { gap: 10px; grid-template-columns: 1fr; }
 }
+
 /* App.css – thêm ở cuối */
-.page-content .askip-form label { color:#fff; font-weight:600; display:block; }
+.page-content .askip-form label { 
+  color:#fff; 
+  font-weight:600; 
+  display:block; 
+}
 .page-content .askip-form textarea {
-  background:#fff; color:#111; width:100%; border-radius:12px; padding:10px; border:1px solid #e5e7eb;
+  background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* trắng → xám nhạt */
+  color:#111; 
+  width:100%; 
+  border-radius:12px; 
+  padding:10px; 
+  border:1px solid #e5e7eb;
 }
 .page-content .askip-form button {
-  background:#111; color:#fff; border-radius:12px; padding:8px 14px; border:1px solid transparent;
+  background: linear-gradient(to right, #111, #333); /* đen → xám đậm */
+  color:#fff; 
+  border-radius:12px; 
+  padding:8px 14px; 
+  border:1px solid transparent;
 }
-
-
-
-
