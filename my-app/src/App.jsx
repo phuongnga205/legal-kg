@@ -78,14 +78,16 @@ function App() {
             
             {/* 🔒 Trang yêu cầu đăng nhập */}
             <Route path="/benchan" element={<BenPage lang={lang} user={user} />} />
-            <Route 
+            <Route path="/lawyer" element={<LawyerPage lang={lang} user={user} />} />  
+            {/*<Route 
               path="/lawyer" 
               element={
                 <ProtectedRoute user={user}>
                   <LawyerPage lang={lang} />
                 </ProtectedRoute>
               } 
-            />
+            />*/}
+            
 
             <Route path="/login" element={<LoginPage lang={lang} setUser={handleSetUser} />} />
             <Route path="/register" element={<RegisterPage lang={lang} setUser={handleSetUser} />} />

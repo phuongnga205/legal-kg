@@ -29,7 +29,7 @@
 
   background-color: #f9f8f4; /*Màu nền*/
   box-sizing: border-box; /*Tính padding vào trong width/height (đỡ vỡ layout)*/
-  z-index: 1000;          /*Nằm trên các phần tử khác (tránh bị che). */
+  z-index: 800;          /*Nằm trên các phần tử khác (tránh bị che). */
 
   transition: top 0.3s ease; /*hiệu ứng mượt hơn khi điều chỉnh độ nhỏ lớn của khung*/
 }

@@ -1,9 +1,11 @@
 // pages/LawyerPage.jsx
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import LawyerList from "../components/LawyerList.jsx";
+import Overlay from "../components/Overlay.jsx";
 
 
-// Mock data: bạn có thể tách ra /data/lawyers.js hoặc gọi API
+// Mock data
 const MOCK_LAWYERS = [
   {
     id: "lw_001",
@@ -47,7 +49,7 @@ const MOCK_LAWYERS = [
   },
 ];
 
-export default function LawyerPage() {
+const LawyerPage = ({ lang, user }) => {
   const [q, setQ] = useState("");
 
   const list = useMemo(() => {
@@ -63,7 +65,7 @@ export default function LawyerPage() {
   }, [q]);
 
   return (
-    <div className="page-wrap">
+    <div className="lawyer-page">
       <div className="page-header">
         <h1>弁護士一覧</h1>
         <div className="spacer" />
@@ -77,6 +79,10 @@ export default function LawyerPage() {
       </div>
 
       <LawyerList data={list} />
+
+      {!user && <Overlay lang={lang} />}
     </div>
   );
-}
+};
+
+export default LawyerPage;
