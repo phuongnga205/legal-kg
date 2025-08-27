@@ -45,3 +45,7 @@
 .overlay-btn:hover {
   background: #444;
 }
+
+.overlay a:hover {
+  color: #e5727c;
+}
