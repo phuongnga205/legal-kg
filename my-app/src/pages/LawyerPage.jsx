@@ -49,10 +49,11 @@ const MOCK_LAWYERS = [
   },
 ];
 
-const LawyerPage = ({ lang, user }) => {
+
+export default function LawyerPage({ lang = "VN", user }) {
   const [q, setQ] = useState("");
 
-  const list = useMemo(() => {
+  const filteredList = useMemo(() => {
     const s = q.trim().toLowerCase();
     if (!s) return MOCK_LAWYERS;
     return MOCK_LAWYERS.filter(
@@ -64,25 +65,40 @@ const LawyerPage = ({ lang, user }) => {
     );
   }, [q]);
 
+  const text = {
+    EN: {
+      title: "LIST OF LAWYERS",
+      placeholder: "Search by name / specialty / office…",
+      total: (n) => `Total: ${n}`,
+    },
+    JP: {
+      title: "弁護士一覧",
+      placeholder: "名前・専門・勤務先で検索…",
+      total: (n) => `合計: ${n}名`,
+    },
+    VN: {
+      title: "DANH SÁCH LUẬT SƯ",
+      placeholder: "Tìm theo tên / chuyên môn / nơi làm việc…",
+      total: (n) => `Tổng số: ${n}`,
+    },
+  }[lang];
+
   return (
     <div className="lawyer-page">
       <div className="page-header">
-        <h1>弁護士一覧</h1>
+        <h1>{text.title}</h1>
         <div className="spacer" />
         <input
           className="search-input"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Tìm theo tên / chuyên môn / nơi làm việc…"
+          placeholder={text.placeholder}
         />
-        <div className="count">Tổng số: {list.length}</div>
+        <div className="count">{text.total(filteredList.length)}</div>
       </div>
 
-      <LawyerList data={list} />
-
+      <LawyerList data={filteredList} />
       {!user && <Overlay lang={lang} />}
     </div>
   );
-};
-
-export default LawyerPage;
+}
