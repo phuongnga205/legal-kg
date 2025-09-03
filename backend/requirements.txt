@@ -1,7 +1,6 @@
-fastapi 
-uvicorn[standard] 
+fastapi
+uvicorn[standard]
 neo4j
-spacy==3.7.2
 pandas
 scikit-learn
 sentence-transformers
