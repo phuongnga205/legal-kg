@@ -1,0 +1,30 @@
+{
+  "copyright_register": {
+    "law_titles": [
+      "Đăng ký quyền tác giả", "Đơn đăng ký quyền tác giả",
+      "Giấy chứng nhận đăng ký quyền tác giả", "Hiệu lực Giấy chứng nhận đăng ký quyền tác giả"
+    ],
+    "decree_titles": [
+      "Hồ sơ đăng ký quyền tác giả",
+      "Thẩm quyền cấp Giấy chứng nhận đăng ký quyền tác giả"
+    ],
+    "extra_kw": ["đăng ký", "giấy chứng nhận", "hồ sơ", "nộp đơn"]
+  },
+  "copyright_infringe": {
+    "law_titles": ["Hành vi xâm phạm quyền tác giả"],
+    "decree_titles": ["Xử phạt hành vi sao chép trái phép"],
+    "extra_kw": ["xâm phạm", "sao chép", "xử phạt"]
+  },
+  "trademark_register": {
+    "law_titles": [
+      "Điều kiện chung đối với nhãn hiệu được bảo hộ",
+      "Yêu cầu đối với đơn đăng ký nhãn hiệu",
+      "Hiệu lực của văn bằng bảo hộ"
+    ],
+    "decree_titles": [
+      "Hồ sơ đăng ký nhãn hiệu",
+      "Thẩm định nội dung đơn đăng ký sở hữu công nghiệp"
+    ],
+    "extra_kw": ["đăng ký nhãn hiệu", "nộp đơn", "thẩm định", "văn bằng bảo hộ"]
+  }
+}
