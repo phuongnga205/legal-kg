@@ -1,7 +1,7 @@
-# LawIP – Legal Knowledge Graph Chatbot  
+# Benvise – Legal Knowledge Graph Chatbot  
 
 ## 📌 Giới thiệu  
-**LawIP** là một hệ thống chatbot luật Sở hữu trí tuệ (Intellectual Property) dành cho người Nhật sống và làm việc tại Việt Nam.  
+**Benvise** là một hệ thống chatbot luật Sở hữu trí tuệ (Intellectual Property) dành cho người Nhật sống và làm việc tại Việt Nam.  
 Dự án kết hợp **Neo4j (graph database)** với **FastAPI backend** và **React frontend** để:  
 
 - Trả lời câu hỏi liên quan đến Luật SHTT Việt Nam (RAG – Retrieval Augmented Generation).  
@@ -69,4 +69,5 @@ Frontend chạy tại: `http://localhost:5173`
 - **LangChain (dự kiến)**: Tích hợp RAG với LLM để chatbot trả lời tự nhiên hơn.  
 
 ---
+
 
