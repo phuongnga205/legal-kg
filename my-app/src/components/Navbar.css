@@ -1,0 +1,37 @@
+.navbar {
+  background: linear-gradient(
+    to top,
+    #333,
+    #292929
+  );
+  padding: 0 20px;
+  display: flex;
+  justify-content: center; /* ✅ Canh giữa nội dung */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  padding: 15px 0;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #e5727c;
+}
+
+.navbar .active {
+  border-bottom: 2px solid #e5727c;
+}

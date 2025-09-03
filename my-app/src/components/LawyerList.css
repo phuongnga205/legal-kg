@@ -1,0 +1,262 @@
+/* Ẩn thanh cuộn toàn bộ body */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Không cho body cuộn */
+}
+
+/* Toàn trang lawyer-page */
+.lawyer-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: transparent;
+
+  /* Cho phép cuộn */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+
+}
+
+/* Mặc định: ẩn scrollbar */
+.lawyer-page {
+  overflow-y: auto;
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE/Edge */
+}
+
+.lawyer-page::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Khi hover: hiện scrollbar */
+.lawyer-page:hover {
+  scrollbar-width: thin;           /* Firefox */
+}
+
+.lawyer-page:hover::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.lawyer-page::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lawyer-page::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    #72383d, 
+    #3e2326 
+  );
+  border-radius: 4px;
+}
+
+.lawyer-page::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(37, 33, 33, 0.5);
+}
+
+
+/* Grid card luật sư */
+.lw-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .lw-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Card */
+.lw-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  transition: transform 0.2s ease;
+}
+
+.lw-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* Avatar */
+.lw-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Body card */
+.lw-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Header + JP name */
+.lw-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lw-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lw-jp {
+  margin-left: 8px;
+  font-size: 13px;
+  color: rgba(0,0,0,.6);
+}
+
+/* Rating */
+.lw-rating {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.lw-rating-num {
+  margin-left: 6px;
+  color: rgba(0,0,0,.65);
+  font-size: 12px;
+}
+
+/* Chips */
+.lw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lw-chip {
+  padding: 6px 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+}
+
+/* Bio */
+.lw-bio {
+  margin: 2px 0 0;
+  color: rgba(0,0,0,.7);
+  font-size: 14px;
+}
+
+/* Actions */
+.lw-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.lw-btn-primary {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.lw-btn-primary:hover {
+  background: #000;
+}
+
+.lw-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.lw-btn-ghost:hover {
+  background: rgba(0,0,0,.04);
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Search input */
+/* Wrapper cho input + icon */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Sửa lại padding phải để tránh icon đè lên text */
+.search-input {
+  width: 100%;
+  padding: 14px 48px 14px 22px; /* ← thêm khoảng bên phải */
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: border 0.2s ease;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: #888;
+  outline: none;
+}
+
+/* Icon kính lúp */
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #999;
+  pointer-events: none;
+}
+
+/* Count */
+.count {
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+}

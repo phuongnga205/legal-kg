@@ -1,0 +1,72 @@
+/* overlay nền tối toàn màn hình */
+.overlay-backdrop {
+  position: fixed; /* Cố định phần tử này phủ toàn màn hình, không bị cuộn theo trang. */
+  inset: 0; /*Viết tắt cho top:0; right:0; bottom:0; left:0;, tức phủ kín toàn màn hình.*/
+  background:  rgba(0, 0, 0, 0.4); /*Màu nền đen trong suốt 60%. Tạo hiệu ứng che mờ phía sau.*/
+  /*Dùng flexbox để căn giữa nội dung overlay cả theo trục ngang và dọc.*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /*Đặt lớp này nổi hẳn lên trên các thành phần khác (ưu tiên hiển thị).*/
+}
+
+/* box overlay (hộp trắng bên trong)*/
+.overlay-box {
+  background:#f9f8f4;
+  /*Chiếm 80% chiều rộng màn hình nhưng không vượt quá 900px.*/
+  width: 80%; 
+  max-width: 900px;
+  max-height: 85%; /*Chiều cao tối đa 85% màn hình (tránh tràn ra ngoài).*/
+  border-radius: 25px; /*bo goc*/
+  overflow: hidden; /*Nếu nội dung vượt quá hộp, sẽ bị cắt (ẩn scrollbar xấu ở border).*/
+  /*Bố cục chia dọc (header ở trên, body ở dưới).*/
+  display: flex; 
+  flex-direction: column;
+  /*Đổ bóng mờ tạo hiệu ứng nổi.*/
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  /*Khi xuất hiện, chạy hiệu ứng trượt lên + mờ dần trong 0.25s.*/
+  animation: fadeInUp .25s ease;
+}
+
+/* header */
+.overlay-header {
+  background: #72383d;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.overlay-header h2 { margin: 0; font-size: 1.1rem; }
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* body */
+.overlay-body {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* animation */
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/*Nut tat*/
+.close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* kích thước icon */
+  color: #ffffff;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

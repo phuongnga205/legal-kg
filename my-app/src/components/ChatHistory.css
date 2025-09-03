@@ -1,0 +1,100 @@
+/* === Khung tổng thể === */
+.chat-history-container {
+  position: fixed;
+  top: calc(112px + ((100vh - 85px - 75.5vh) / 2));
+  left: calc(50% - 55vw/4 - 22vw - 30px);
+
+  width: 22vw;
+  height: 75.5vh;
+
+  background:  #f9f8f4;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  z-index: 800;
+  overflow-y: auto;
+  transition: top 0.3s ease;
+}
+
+@media (max-height: 700px) {
+  .chat-history-container {
+    top: calc(var(--top-offset) + var(--gap-below-header));
+  }
+}
+
+/* Header dùng chung cho Chat mới + Lịch sử */
+.history-header {
+  font-weight: 700;
+  text-align: left;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background:  #f9f8f4;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.history-header:hover {
+  background: #fcf6da;
+  transform: translateX(3px);
+}
+
+/* Toggle Lịch sử hội thoại */
+.history-toggle {
+  font-weight: 700;
+  text-align: left;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background:  #f9f8f4;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.history-toggle .arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* Danh sách */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;      /* ✅ bỏ margin mặc định */
+  padding: 0;     /* ✅ bỏ padding mặc định */
+  border-left: 2px solid #deb974;
+  padding-left: 1.5px;
+  margin-left: 12px;
+}
+
+.history-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f8f4;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  width: 100%;        /* ✅ full chiều ngang */
+  box-sizing: border-box;
+}
+
+.history-list li:hover {
+  transform: translateX(3px);
+}
+
+

@@ -1,0 +1,138 @@
+/* Import font Poppins từ Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.home-container {
+  position: fixed;
+  top: calc(var(--top-offset) + ((100vh - var(--top-offset) - 75.5vh) / 2)); /* Căn giữa dọc */
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 85vw;
+  height: 75.5vh;
+  min-height:auto;
+
+  background-color: #f9f8f4;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0;
+
+  box-sizing: border-box;
+  z-index: 1000;
+
+  transition: top 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Khi chiều cao nhỏ hơn 700px, không căn giữa nữa để tránh bị đè lên header */
+@media (max-height: 700px) {
+  .home-container {
+    top: calc(var(--top-offset) + var(--gap-below-header));
+    height: 75.5vh; /* giữ nguyên chiều cao theo viewport */
+  }
+}
+
+/* Bên trái: chứa hình */
+.home-image {
+  width: 40%;
+  height: 100%;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.home-image img {
+  max-width: 75%;
+  max-height: 75%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  transform: rotate(5deg);  /* 👈 xoay ảnh 5 độ cung chiều kim đồng hồ */
+}
+
+/* Bên phải: chứa nội dung */
+.home-content {
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.home-content h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.home-content p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.8;
+  color: #222;
+  text-align: justify;
+  animation: fadeIn 1s ease;
+  margin: 0;
+}
+
+/* Keyword gradient chữ (không hover) */
+.highlight {
+  font-weight: 600;
+  background: linear-gradient(90deg, #f59e0b, #e11d48); /* vàng → đỏ */
+  background-clip: text;              /* phiên bản chuẩn */
+  -webkit-background-clip: text;      /* cho Chrome, Safari */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hiệu ứng hiện mượt */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive khi màn hình nhỏ hơn 400px */
+@media (max-width: 400px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
+
+  .home-image,
+  .home-content {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .home-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .home-content {
+    align-items: center;
+    text-align: center;
+  }
+}

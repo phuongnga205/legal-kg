@@ -1,0 +1,37 @@
+.result-columns {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+/* Nếu bạn muốn giới hạn chiều rộng để không bị giãn quá */
+.results {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+.left-column h3 {
+  color: #333333 !important;
+  text-align: center; 
+  font-size: 25px;   /* ✅ chỉnh size (ví dụ 20px) */
+  font-weight: bold; /* đậm hơn cho nổi bật */
+}
+
+.right-column h3 {
+  color: #6b1e1e !important;
+  text-align: center; 
+  font-size: 25px;   /* ✅ chỉnh size (ví dụ 20px) */
+  font-weight: bold; /* đậm hơn cho nổi bật */
+}
+.left-column {
+  flex: 0.55;
+}
+.right-column {
+  flex: 0.45;
+}
+
