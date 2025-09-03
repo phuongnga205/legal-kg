@@ -5,3 +5,6 @@ pandas
 scikit-learn
 sentence-transformers
 email-validator
+python-jose[cryptography]
+passlib[bcrypt]
+
